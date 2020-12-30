@@ -9,9 +9,9 @@ class App extends Component {
 			<div className="App">
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-					<Person />
-					<Person />
-					<Person />
+					<Person name="Noelle" movie="Black Clover" />
+					<Person name="Nezuko" movie="Kimetsu no yaiba" />
+					<Person name="Hinata" movie="Naruto" />
 					<p>
 						Edit <code>src/App.js</code> and save to reload.
 					</p>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class Person extends Component {
-	render() {
-		return (
-			<p>I'm a Person and I'm {Math.floor(Math.random() * 30)} years old</p>
-		);
-	}
+function Person(props) {
+	return (
+		<p>
+			Name character is {props.name} and The name anime's {props.movie}
+		</p>
+	);
 }
 
 export default Person;
