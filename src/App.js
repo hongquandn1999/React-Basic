@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Person from './persons/person';
 
@@ -11,11 +10,21 @@ class App extends Component {
 			{ name: 'Hinata', anime: 'Naruto' },
 		],
 	};
+
+	switchNameHandler = (newCharacter) => {
+		this.setState({
+			persons: [
+				{ name: newCharacter, anime: 'Black Clover' },
+				{ name: 'Nezuko', anime: 'Kimetsu no yaiba' },
+				{ name: 'Rengoku', anime: 'Naruto' },
+			],
+		});
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
 					<Person
 						name={this.state.persons[0].name}
 						movie={this.state.persons[0].anime}
@@ -23,6 +32,7 @@ class App extends Component {
 					<Person
 						name={this.state.persons[1].name}
 						movie={this.state.persons[1].anime}
+						click={this.switchNameHandler.bind(this, 'Noelle')}
 					>
 						This movie used to appear at movie theater
 					</Person>
@@ -30,17 +40,12 @@ class App extends Component {
 						name={this.state.persons[2].name}
 						movie={this.state.persons[2].anime}
 					/>
-					<p>
-						Edit <code>src/App.js</code> and save to reload.
-					</p>
-					<a
-						className="App-link"
-						href="https://reactjs.org"
-						target="_blank"
-						rel="noopener noreferrer"
+					<button
+						className="btn"
+						onClick={this.switchNameHandler.bind(this, 'Mimosa')}
 					>
-						Learn React
-					</a>
+						Switch
+					</button>
 				</header>
 			</div>
 		);
