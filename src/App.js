@@ -32,7 +32,7 @@ class App extends Component {
 					<Person
 						name={this.state.persons[1].name}
 						movie={this.state.persons[1].anime}
-						click={this.switchNameHandler.bind(this, 'Noelle')}
+						click={() => this.switchNameHandler('Asta')}
 					>
 						This movie used to appear at movie theater
 					</Person>
@@ -42,7 +42,7 @@ class App extends Component {
 					/>
 					<button
 						className="btn"
-						onClick={this.switchNameHandler.bind(this, 'Mimosa')}
+						onClick={() => this.switchNameHandler('Mimosa')}
 					>
 						Switch
 					</button>
