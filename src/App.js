@@ -32,6 +32,13 @@ class App extends Component {
 	};
 
 	render() {
+		const styleBtn = {
+			width: '80px',
+			height: '50px',
+			backgroundColor: 'aqua',
+			borderRadius: '20%',
+			marginTop: '20px',
+		};
 		return (
 			<div className="App">
 				<header className="App-header">
@@ -52,7 +59,7 @@ class App extends Component {
 						movie={this.state.persons[2].anime}
 					/>
 					<button
-						className="btn"
+						style={styleBtn}
 						onClick={() => this.switchNameHandler('Mimosa')}
 					>
 						Switch
