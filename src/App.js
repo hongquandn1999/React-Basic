@@ -21,6 +21,16 @@ class App extends Component {
 		});
 	};
 
+	nameChangeHandler = (event) => {
+		this.setState({
+			persons: [
+				{ name: event.target.value, anime: 'Black Clover' },
+				{ name: 'Nezuko', anime: 'Kimetsu no yaiba' },
+				{ name: 'Rengoku', anime: 'Naruto' },
+			],
+		});
+	};
+
 	render() {
 		return (
 			<div className="App">
@@ -28,6 +38,7 @@ class App extends Component {
 					<Person
 						name={this.state.persons[0].name}
 						movie={this.state.persons[0].anime}
+						changed={this.nameChangeHandler}
 					/>
 					<Person
 						name={this.state.persons[1].name}

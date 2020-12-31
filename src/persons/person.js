@@ -7,6 +7,7 @@ function Person(props) {
 				Name character is {props.name} and The name anime's {props.movie}
 			</p>
 			<p>{props.children}</p>
+			<input type="text" onChange={props.changed} value={props.name} />
 		</div>
 	);
 }
