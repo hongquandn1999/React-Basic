@@ -1,13 +1,21 @@
 import React from 'react';
+import './person.css';
 
 function Person(props) {
 	return (
-		<div>
-			<p onClick={props.click}>
-				Name character is {props.name} and The name anime's {props.movie}
-			</p>
-			<p>{props.children}</p>
-			<input type="text" onChange={props.changed} value={props.name} />
+		<div className="content">
+			<div className="sub">
+				<p onClick={props.click}>
+					Name character is {props.name} and The name anime's {props.movie}
+				</p>
+				<p>{props.children}</p>
+				<input
+					type="text"
+					className="input"
+					onChange={props.changed}
+					value={props.name}
+				/>
+			</div>
 		</div>
 	);
 }
