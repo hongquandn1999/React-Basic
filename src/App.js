@@ -13,44 +13,57 @@ class App extends Component {
 		showPersons: false,
 	};
 
-	switchNameHandler = (newCharacter) => {
+	nameChangeHandler = (event, id) => {
+		const indexPerson = this.state.persons.findIndex((p) => p.id === id);
+
+		const person = {
+			...this.state.persons[indexPerson],
+		};
+
+		person.name = event.target.value;
+
+		const persons = [...this.state.persons];
+
+		persons[indexPerson] = person;
+
 		this.setState({
-			persons: [
-				{ name: newCharacter, anime: 'Black Clover' },
-				{ name: 'Nezuko', anime: 'Kimetsu no yaiba' },
-				{ name: 'Rengoku', anime: 'Naruto' },
-			],
+			persons: persons,
 		});
 	};
 
-	nameChangeHandler = (event) => {
-		this.setState({
-			persons: [
-				{ name: event.target.value, anime: 'Black Clover' },
-				{ name: 'Nezuko', anime: 'Kimetsu no yaiba' },
-				{ name: 'Rengoku', anime: 'Naruto' },
-			],
-		});
-	};
-
-	toggleBtnHandler = () => {
+	togglePersonHandler = () => {
 		const statusShow = this.state.showPersons;
 		this.setState({ showPersons: !statusShow });
+	};
+
+	deletePersonHandler = (personIndex) => {
+		const persons = [...this.state.persons];
+		persons.splice(personIndex, 1);
+		this.setState({ persons: persons });
+		console.log(persons);
 	};
 
 	render() {
 		let persons = null;
 
 		if (this.state.showPersons) {
-			persons = this.state.persons.map((person) => {
-				return <Person name={person.name} movie={person.anime} />;
+			persons = this.state.persons.map((person, index) => {
+				return (
+					<Person
+						name={person.name}
+						movie={person.anime}
+						click={this.deletePersonHandler.bind(index)}
+						key={person.id}
+						changed={(event) => this.nameChangeHandler(event, person.id)}
+					/>
+				);
 			});
 		}
 
 		return (
 			<div className="App">
 				<header className="App-header">
-					<button className="btn" onClick={this.toggleBtnHandler}>
+					<button className="btn" onClick={this.togglePersonHandler}>
 						Switch
 					</button>
 					{persons}
