@@ -9,6 +9,7 @@ class App extends Component {
 			{ name: 'Nezuko', anime: 'Kimetsu no yaiba' },
 			{ name: 'Hinata', anime: 'Naruto' },
 		],
+		showPersons: false,
 	};
 
 	switchNameHandler = (newCharacter) => {
@@ -31,39 +32,38 @@ class App extends Component {
 		});
 	};
 
+	toggleBtnHandler = () => {
+		const statusShow = this.state.showPersons;
+		this.setState({ showPersons: !statusShow });
+	};
+
 	render() {
-		const styleBtn = {
-			width: '80px',
-			height: '50px',
-			backgroundColor: 'aqua',
-			borderRadius: '20%',
-			marginTop: '20px',
-		};
 		return (
 			<div className="App">
 				<header className="App-header">
-					<Person
-						name={this.state.persons[0].name}
-						movie={this.state.persons[0].anime}
-						changed={this.nameChangeHandler}
-					/>
-					<Person
-						name={this.state.persons[1].name}
-						movie={this.state.persons[1].anime}
-						click={() => this.switchNameHandler('Asta')}
-					>
-						This movie used to appear at movie theater
-					</Person>
-					<Person
-						name={this.state.persons[2].name}
-						movie={this.state.persons[2].anime}
-					/>
-					<button
-						style={styleBtn}
-						onClick={() => this.switchNameHandler('Mimosa')}
-					>
+					<button className="btn" onClick={this.toggleBtnHandler}>
 						Switch
 					</button>
+					{this.state.showPersons ? (
+						<div>
+							<Person
+								name={this.state.persons[0].name}
+								movie={this.state.persons[0].anime}
+								changed={this.nameChangeHandler}
+							/>
+							<Person
+								name={this.state.persons[1].name}
+								movie={this.state.persons[1].anime}
+								click={() => this.switchNameHandler('Asta')}
+							>
+								This movie used to appear at movie theater
+							</Person>
+							<Person
+								name={this.state.persons[2].name}
+								movie={this.state.persons[2].anime}
+							/>
+						</div>
+					) : null}
 				</header>
 			</div>
 		);
