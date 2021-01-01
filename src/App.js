@@ -38,32 +38,38 @@ class App extends Component {
 	};
 
 	render() {
+		let persons = null;
+
+		if (this.state.showPersons) {
+			persons = (
+				<div>
+					<Person
+						name={this.state.persons[0].name}
+						movie={this.state.persons[0].anime}
+						changed={this.nameChangeHandler}
+					/>
+					<Person
+						name={this.state.persons[1].name}
+						movie={this.state.persons[1].anime}
+						click={() => this.switchNameHandler('Asta')}
+					>
+						This movie used to appear at movie theater
+					</Person>
+					<Person
+						name={this.state.persons[2].name}
+						movie={this.state.persons[2].anime}
+					/>
+				</div>
+			);
+		}
+
 		return (
 			<div className="App">
 				<header className="App-header">
 					<button className="btn" onClick={this.toggleBtnHandler}>
 						Switch
 					</button>
-					{this.state.showPersons ? (
-						<div>
-							<Person
-								name={this.state.persons[0].name}
-								movie={this.state.persons[0].anime}
-								changed={this.nameChangeHandler}
-							/>
-							<Person
-								name={this.state.persons[1].name}
-								movie={this.state.persons[1].anime}
-								click={() => this.switchNameHandler('Asta')}
-							>
-								This movie used to appear at movie theater
-							</Person>
-							<Person
-								name={this.state.persons[2].name}
-								movie={this.state.persons[2].anime}
-							/>
-						</div>
-					) : null}
+					{persons}
 				</header>
 			</div>
 		);
