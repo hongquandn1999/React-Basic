@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import shortid from 'shortid';
 import Person from './persons/person';
 
 class App extends Component {
 	state = {
 		persons: [
-			{ name: 'Noelle', anime: 'Black Clover' },
-			{ name: 'Nezuko', anime: 'Kimetsu no yaiba' },
-			{ name: 'Hinata', anime: 'Naruto' },
+			{ id: shortid.generate(), name: 'Noelle', anime: 'Black Clover' },
+			{ id: shortid.generate(), name: 'Nezuko', anime: 'Kimetsu no yaiba' },
+			{ id: shortid.generate(), name: 'Hinata', anime: 'Naruto' },
 		],
 		showPersons: false,
 	};
@@ -41,26 +42,9 @@ class App extends Component {
 		let persons = null;
 
 		if (this.state.showPersons) {
-			persons = (
-				<div>
-					<Person
-						name={this.state.persons[0].name}
-						movie={this.state.persons[0].anime}
-						changed={this.nameChangeHandler}
-					/>
-					<Person
-						name={this.state.persons[1].name}
-						movie={this.state.persons[1].anime}
-						click={() => this.switchNameHandler('Asta')}
-					>
-						This movie used to appear at movie theater
-					</Person>
-					<Person
-						name={this.state.persons[2].name}
-						movie={this.state.persons[2].anime}
-					/>
-				</div>
-			);
+			persons = this.state.persons.map((person) => {
+				return <Person name={person.name} movie={person.anime} />;
+			});
 		}
 
 		return (
