@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 import shortid from 'shortid';
 import Person from './persons/person';
-import Radium, { StyleRoot } from 'radium';
+import styled from 'styled-components';
+
+const StyleButton = styled.button`
+	width: 80px;
+	height: 50px;
+	background-color: aqua;
+	border-radius: 20%;
+	margin-top: 20px;
+
+	&:hover {
+		background-color: yellowgreen;
+		cursor: pointer;
+	}
+`;
 
 class App extends Component {
 	state = {
@@ -45,18 +58,6 @@ class App extends Component {
 	};
 
 	render() {
-		const style = {
-			width: '80px',
-			height: '50px',
-			backgroundColor: 'aqua',
-			borderRadius: '20%',
-			marginTop: '20px',
-			':hover': {
-				backgroundColor: 'yellowgreen',
-				cursor: 'pointer',
-			},
-		};
-
 		let persons = null;
 
 		if (this.state.showPersons) {
@@ -71,8 +72,6 @@ class App extends Component {
 					/>
 				);
 			});
-
-			style.backgroundColor = 'green';
 		}
 
 		// ----- Class Dynamic css -------
@@ -86,20 +85,16 @@ class App extends Component {
 		//---------------------------------
 
 		return (
-			<StyleRoot>
-				<div className="App">
-					<header className="App-header">
-						<h1>List Character Anime</h1>
-						<p className={classes.join(' ')}>Sunshine</p>
-						<button onClick={this.togglePersonHandler} style={style}>
-							Switch
-						</button>
-						{persons}
-					</header>
-				</div>
-			</StyleRoot>
+			<div className="App">
+				<header className="App-header">
+					<h1>List Character Anime</h1>
+					<p className={classes.join(' ')}>Sunshine</p>
+					<StyleButton onClick={this.togglePersonHandler}>Switch</StyleButton>
+					{persons}
+				</header>
+			</div>
 		);
 	}
 }
 
-export default Radium(App);
+export default App;
