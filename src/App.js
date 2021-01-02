@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import shortid from 'shortid';
 import Person from './persons/person';
+import Radium from 'radium';
 
 class App extends Component {
 	state = {
@@ -50,6 +51,10 @@ class App extends Component {
 			backgroundColor: 'aqua',
 			borderRadius: '20%',
 			marginTop: '20px',
+			':hover': {
+				backgroundColor: 'yellowgreen',
+				cursor: 'pointer',
+			},
 		};
 
 		let persons = null;
@@ -85,11 +90,7 @@ class App extends Component {
 				<header className="App-header">
 					<h1>List Character Anime</h1>
 					<p className={classes.join(' ')}>Sunshine</p>
-					<button
-						className="btn"
-						onClick={this.togglePersonHandler}
-						style={style}
-					>
+					<button onClick={this.togglePersonHandler} style={style}>
 						Switch
 					</button>
 					{persons}
@@ -99,4 +100,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default Radium(App);
