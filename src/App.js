@@ -70,9 +70,21 @@ class App extends Component {
 			style.backgroundColor = 'green';
 		}
 
+		// ----- Class Dynamic css -------
+		const classes = [];
+		if (this.state.persons.length <= 2) {
+			classes.push('italic');
+		}
+		if (this.state.persons.length <= 1) {
+			classes.push('orange');
+		}
+		//---------------------------------
+
 		return (
 			<div className="App">
 				<header className="App-header">
+					<h1>List Character Anime</h1>
+					<p className={classes.join(' ')}>Sunshine</p>
 					<button
 						className="btn"
 						onClick={this.togglePersonHandler}

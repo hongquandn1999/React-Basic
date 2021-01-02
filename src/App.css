@@ -20,3 +20,11 @@
 	background-color: yellowgreen;
 	cursor: pointer;
 }
+
+.orange {
+	color: orangered;
+}
+
+.italic {
+	font-style: italic;
+}
