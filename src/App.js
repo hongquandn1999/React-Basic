@@ -44,6 +44,14 @@ class App extends Component {
 	};
 
 	render() {
+		const style = {
+			width: '80px',
+			height: '50px',
+			backgroundColor: 'aqua',
+			borderRadius: '20%',
+			marginTop: '20px',
+		};
+
 		let persons = null;
 
 		if (this.state.showPersons) {
@@ -58,12 +66,18 @@ class App extends Component {
 					/>
 				);
 			});
+
+			style.backgroundColor = 'green';
 		}
 
 		return (
 			<div className="App">
 				<header className="App-header">
-					<button className="btn" onClick={this.togglePersonHandler}>
+					<button
+						className="btn"
+						onClick={this.togglePersonHandler}
+						style={style}
+					>
 						Switch
 					</button>
 					{persons}
