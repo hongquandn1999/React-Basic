@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import shortid from 'shortid';
 import Person from './persons/person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
 	state = {
@@ -86,16 +86,18 @@ class App extends Component {
 		//---------------------------------
 
 		return (
-			<div className="App">
-				<header className="App-header">
-					<h1>List Character Anime</h1>
-					<p className={classes.join(' ')}>Sunshine</p>
-					<button onClick={this.togglePersonHandler} style={style}>
-						Switch
-					</button>
-					{persons}
-				</header>
-			</div>
+			<StyleRoot>
+				<div className="App">
+					<header className="App-header">
+						<h1>List Character Anime</h1>
+						<p className={classes.join(' ')}>Sunshine</p>
+						<button onClick={this.togglePersonHandler} style={style}>
+							Switch
+						</button>
+						{persons}
+					</header>
+				</div>
+			</StyleRoot>
 		);
 	}
 }

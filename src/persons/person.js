@@ -2,8 +2,13 @@ import React from 'react';
 import './person.css';
 import Radium from 'radium';
 function Person(props) {
+	const style = {
+		'@media (max-width: 500px)': {
+			width: '450px',
+		},
+	};
 	return (
-		<div className="content">
+		<div className="content" style={style}>
 			<div className="sub">
 				<p onClick={props.click}>
 					Name character is {props.name} and The name anime's {props.movie}
