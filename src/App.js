@@ -7,12 +7,12 @@ import styled from 'styled-components';
 const StyleButton = styled.button`
 	width: 80px;
 	height: 50px;
-	background-color: aqua;
+	background-color: ${(props) => (props.status ? 'aqua' : 'pink')};
 	border-radius: 20%;
 	margin-top: 20px;
 
 	&:hover {
-		background-color: yellowgreen;
+		background-color: ${(props) => (props.status ? 'yellowgreen' : 'green')};
 		cursor: pointer;
 	}
 `;
@@ -89,7 +89,12 @@ class App extends Component {
 				<header className="App-header">
 					<h1>List Character Anime</h1>
 					<p className={classes.join(' ')}>Sunshine</p>
-					<StyleButton onClick={this.togglePersonHandler}>Switch</StyleButton>
+					<StyleButton
+						status={this.state.showPersons}
+						onClick={this.togglePersonHandler}
+					>
+						Switch
+					</StyleButton>
 					{persons}
 				</header>
 			</div>
