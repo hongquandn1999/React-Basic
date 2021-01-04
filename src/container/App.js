@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import shortid from 'shortid';
-import Person from './persons/person';
+import Person from '../components/Persons/Person/person';
 import styled from 'styled-components';
 
 const StyleButton = styled.button`
