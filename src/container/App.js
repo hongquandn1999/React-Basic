@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import shortid from 'shortid';
-import Person from '../components/Persons/Person/person';
-import styled from 'styled-components';
-
-const StyleButton = styled.button`
-	width: 80px;
-	height: 50px;
-	background-color: ${(props) => (props.status ? 'aqua' : 'pink')};
-	border-radius: 20%;
-	margin-top: 20px;
-
-	&:hover {
-		background-color: ${(props) => (props.status ? 'yellowgreen' : 'green')};
-		cursor: pointer;
-	}
-`;
+import Persons from '../components/Persons/persons';
+import Cockpit from '../components/Cockpit/cockpit';
 
 class App extends Component {
 	state = {
@@ -61,40 +48,25 @@ class App extends Component {
 		let persons = null;
 
 		if (this.state.showPersons) {
-			persons = this.state.persons.map((person, index) => {
-				return (
-					<Person
-						name={person.name}
-						movie={person.anime}
-						click={this.deletePersonHandler.bind(index)}
-						key={person.id}
-						changed={(event) => this.nameChangeHandler(event, person.id)}
+			persons = (
+				<div>
+					<Persons
+						persons={this.state.persons}
+						clicked={this.deletePersonHandler}
+						changed={this.nameChangeHandler}
 					/>
-				);
-			});
+				</div>
+			);
 		}
-
-		// ----- Class Dynamic css -------
-		const classes = [];
-		if (this.state.persons.length <= 2) {
-			classes.push('italic');
-		}
-		if (this.state.persons.length <= 1) {
-			classes.push('orange');
-		}
-		//---------------------------------
 
 		return (
 			<div className="App">
 				<header className="App-header">
-					<h1>List Character Anime</h1>
-					<p className={classes.join(' ')}>Sunshine</p>
-					<StyleButton
+					<Cockpit
+						persons={this.state.persons}
 						status={this.state.showPersons}
 						onClick={this.togglePersonHandler}
-					>
-						Switch
-					</StyleButton>
+					/>
 					{persons}
 				</header>
 			</div>
