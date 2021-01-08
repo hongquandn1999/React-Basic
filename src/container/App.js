@@ -5,6 +5,11 @@ import Persons from '../components/Persons/persons';
 import Cockpit from '../components/Cockpit/cockpit';
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		console.log('[App.js] constructor');
+	}
+
 	state = {
 		persons: [
 			{ id: shortid.generate(), name: 'Noelle', anime: 'Black Clover' },
@@ -44,7 +49,17 @@ class App extends Component {
 		console.log(persons);
 	};
 
+	// Create the first lifecycle
+	componentDidMount() {
+		console.log('[App.js] ComponentDidMount');
+	}
+
+	getDerivedStateAndProps(props, state) {
+		return state;
+	}
+
 	render() {
+		console.log('[App.js] rendering...');
 		let persons = null;
 
 		if (this.state.showPersons) {

@@ -15,6 +15,7 @@ const StyleDiv = styled.div`
 	}
 `;
 function Person(props) {
+	console.log('[Person.js] rendering');
 	return (
 		<StyleDiv>
 			<div className="sub">
