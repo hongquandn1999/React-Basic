@@ -48,6 +48,16 @@ class App extends Component {
 		this.setState({ persons: persons });
 		console.log(persons);
 	};
+	// Life cycle update
+
+	componentDidUpdate() {
+		console.log('[App.js] componentDidUpdate');
+	}
+
+	shouldComponentUpdate() {
+		console.log('[App.js] shouldComponentUpdate');
+		return false;
+	}
 
 	// Create the first lifecycle
 	componentDidMount() {
