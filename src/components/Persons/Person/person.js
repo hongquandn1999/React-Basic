@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './person.css';
 import styled from 'styled-components';
 
@@ -14,24 +14,27 @@ const StyleDiv = styled.div`
 		width: 450px;
 	}
 `;
-function Person(props) {
-	console.log('[Person.js] rendering');
-	return (
-		<StyleDiv>
-			<div className="sub">
-				<p onClick={props.click}>
-					Name character is {props.name} and The name anime's {props.movie}
-				</p>
-				<p>{props.children}</p>
-				<input
-					type="text"
-					className="input"
-					onChange={props.changed}
-					value={props.name}
-				/>
-			</div>
-		</StyleDiv>
-	);
+class Person extends Component {
+	render() {
+		console.log('[Person.js] rendering');
+		return (
+			<StyleDiv>
+				<div className="sub">
+					<p onClick={this.props.click}>
+						Name character is {this.props.name} and The name anime's{' '}
+						{this.props.movie}
+					</p>
+					<p>{this.props.children}</p>
+					<input
+						type="text"
+						className="input"
+						onChange={this.props.changed}
+						value={this.props.name}
+					/>
+				</div>
+			</StyleDiv>
+		);
+	}
 }
 
 export default Person;
