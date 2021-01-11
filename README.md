@@ -12,3 +12,8 @@
 - shouldComponentUpdate(return **true** pr **false**): will get next props, so the upcoming props which will have an effect right after this update which is about to take place and the upcoming state as arguments
   - Return **true** if React should continue update
   - Return **false** if React shouldn't continue update
+
+# Component Update Lifecycle (for state Changes)
+
+- **Task 1**: Create function shouldComponentUpdate in **App**
+- **Task 2**: Create function componentDidUpdate in **App**
